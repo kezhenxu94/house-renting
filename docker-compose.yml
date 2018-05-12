@@ -1,0 +1,24 @@
+version: '3.1'
+
+services:
+    elastic:
+        image: elasticsearch
+        networks:
+            - localhost
+        ports:
+            - 9200:9200
+        volumes:
+            - ./data/elastic:/usr/share/elasticsearch/data
+
+    kibana:
+        image: kibana
+        networks:
+            - localhost
+        ports:
+            - 5601:5601
+        environment:
+            - ELASTICSEARCH_URL=http://elastic:9200
+
+networks:
+    localhost:
+
