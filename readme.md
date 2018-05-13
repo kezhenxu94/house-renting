@@ -51,3 +51,7 @@ $ docker-compose up --build -d
 #### 展开详细信息:
 
 ![展开详细信息](screenshot/expanding-doc.png)
+
+### 贡献
+
+如果你觉得有些租房网站的内容应该被收录在但这里没有收录, 可以给我[提 Issue](https://github.com/kezhenxu94/house-renting/issues), 或者直接[发 PR](https://github.com/kezhenxu94/house-renting/pulls);
