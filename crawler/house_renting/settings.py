@@ -12,7 +12,7 @@ USER_AGENT = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) ' \
 
 ROBOTSTXT_OBEY = False
 
-DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 10
 
 CONCURRENT_REQUESTS_PER_DOMAIN = 1
 
@@ -46,7 +46,7 @@ AUTOTHROTTLE_ENABLED = True
 # The initial download delay
 AUTOTHROTTLE_START_DELAY = 5
 # The maximum download delay to be set in case of high latencies
-AUTOTHROTTLE_MAX_DELAY = 10
+AUTOTHROTTLE_MAX_DELAY = 60
 # The average number of requests Scrapy should be sending in parallel to
 # each remote server
 AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0

@@ -3,3 +3,8 @@
 *.pyc
 
 data/elastic/
+build/
+dbs/
+eggs/
+logs/
+project.egg-info/
