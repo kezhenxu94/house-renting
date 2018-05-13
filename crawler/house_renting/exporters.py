@@ -6,7 +6,7 @@ from scrapy.exporters import BaseItemExporter
 
 
 class ESItemExporter(BaseItemExporter):
-    client = Elasticsearch(hosts='127.0.0.1')
+    client = Elasticsearch(hosts='elastic')
     index = 'house_renting'
     doc_type = 'Post'
 

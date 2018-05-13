@@ -2,7 +2,7 @@
 !.gitignore
 *.pyc
 
-data/elastic/
+data/
 build/
 dbs/
 eggs/

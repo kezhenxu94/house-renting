@@ -37,7 +37,7 @@ ITEM_PIPELINES = {
     'scrapy.pipelines.images.ImagesPipeline': 100,
     'house_renting.pipelines.ESPipeline': 300,
 }
-IMAGES_STORE = '/tmp/house_renting'
+IMAGES_STORE = '/house-renting/data/images'
 MEDIA_ALLOW_REDIRECTS = True
 
 # Enable and configure the AutoThrottle extension (disabled by default)

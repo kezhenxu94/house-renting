@@ -1,6 +1,29 @@
 version: '3.1'
 
 services:
+    #scrapyd:
+    #    build: ./crawler
+    #    networks:
+    #        - localhost
+    #    ports:
+    #        - 6800:6800
+    #    command: scrapyd
+    #    depends_on:
+    #        - elastic
+
+    scrapy:
+        build: ./crawler
+        networks:
+            - localhost
+        ports:
+            - 6800:6800
+        volumes:
+            - ./crawler:/house-renting/crawler
+            - ./data:/house-renting/data
+        depends_on:
+            - elastic
+        command: scrapy crawl douban
+
     elastic:
         image: elasticsearch
         networks:
@@ -18,6 +41,8 @@ services:
             - 5601:5601
         environment:
             - ELASTICSEARCH_URL=http://elastic:9200
+        depends_on:
+            - elastic
 
 networks:
     localhost:
