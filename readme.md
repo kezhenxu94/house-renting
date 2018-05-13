@@ -23,22 +23,29 @@ $ docker-compose up --build -d
 打开浏览器, 定位到 http://127.0.0.1:5601 
 
 	- 设置索引模式:
-	  ![设置索引模式](screenshot/setting-index-pattern.png)
+
+![设置索引模式](screenshot/setting-index-pattern.png)
 
 	- 切换到 Discover:
-	  ![切换到 Discover](screenshot/discover.png)
+
+![切换到 Discover](screenshot/discover.png)
 
 	- 添加字段:
-	  ![添加字段](screenshot/adding-fields.png)
+
+![添加字段](screenshot/adding-fields.png)
 
 	- 按时间排序:
-	  ![按时间排序](screenshot/sorting-by-fields.png)
+
+![按时间排序](screenshot/sorting-by-fields.png)
 
 	- 搜索一个关键字:
-	  ![搜索一个关键字](screenshot/searching-by-field.png)
+
+![搜索一个关键字](screenshot/searching-by-field.png)
 
 	- 搜索多个个关键字:
-	  ![搜索多个关键字](screenshot/searching-by-fields.png)
+
+![搜索多个关键字](screenshot/searching-by-fields.png)
 
 	- 展开详细信息:
-	  ![展开详细信息](screenshot/expanding-doc.png)
+
+![展开详细信息](screenshot/expanding-doc.png)
