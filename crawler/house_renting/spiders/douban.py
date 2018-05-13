@@ -5,7 +5,7 @@ from scrapy.linkextractors import LinkExtractor
 from scrapy.loader import ItemLoader
 from scrapy.spiders import Rule, CrawlSpider
 
-from house_renting.items import HouseRentingItem
+from house_renting.items import HouseRentingDoubanItem
 
 
 class DoubanSpider(CrawlSpider):
@@ -24,7 +24,7 @@ class DoubanSpider(CrawlSpider):
         selector = Selector(response=response)
         selector.css('div#content div.article div.topic-content')
 
-        item_loader = ItemLoader(item=HouseRentingItem(), selector=selector, response=response)
+        item_loader = ItemLoader(item=HouseRentingDoubanItem(), selector=selector, response=response)
         item_loader.add_css(field_name='title', css='table.infobox *::text')
         item_loader.add_css(field_name='title', css='div#content > h1:first-child::text')
         item_loader.add_value(field_name='source', value=self.name)

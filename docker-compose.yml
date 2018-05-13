@@ -11,18 +11,27 @@ services:
     #    depends_on:
     #        - elastic
 
-    scrapy:
+    douban:
         build: ./crawler
         networks:
             - localhost
-        ports:
-            - 6800:6800
         volumes:
             - ./crawler:/house-renting/crawler
             - ./data:/house-renting/data
         depends_on:
             - elastic
         command: scrapy crawl douban
+
+    _58:
+        build: ./crawler
+        networks:
+            - localhost
+        volumes:
+            - ./crawler:/house-renting/crawler
+            - ./data:/house-renting/data
+        depends_on:
+            - elastic
+        command: scrapy crawl 58
 
     elastic:
         image: elasticsearch

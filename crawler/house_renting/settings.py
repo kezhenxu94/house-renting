@@ -6,9 +6,8 @@ COMMANDS_MODULE = 'house_renting.commands'
 SPIDER_MODULES = ['house_renting.spiders']
 NEWSPIDER_MODULE = 'house_renting.spiders'
 
-USER_AGENT = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) ' \
-             'AppleWebKit/602.1.38 (KHTML, like Gecko) ' \
-             'Version/10.0 Mobile/14A300 Safari/602.1'
+USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1 ' \
+             'Safari/605.1.15 '
 
 ROBOTSTXT_OBEY = False
 
@@ -46,7 +45,7 @@ AUTOTHROTTLE_ENABLED = True
 # The initial download delay
 AUTOTHROTTLE_START_DELAY = 5
 # The maximum download delay to be set in case of high latencies
-AUTOTHROTTLE_MAX_DELAY = 60
+AUTOTHROTTLE_MAX_DELAY = 10
 # The average number of requests Scrapy should be sending in parallel to
 # each remote server
 AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
