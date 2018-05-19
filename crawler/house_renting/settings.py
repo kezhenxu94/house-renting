@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from house_renting.spider_settings import lianjia
 
 BOT_NAME = 'house_renting'
 
@@ -63,3 +64,11 @@ AUTOTHROTTLE_DEBUG = True
 # HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 LOG_LEVEL = 'DEBUG'
+
+SPIDER_SETTINGS = {
+    'lianjia': {
+        'cities': lianjia.cities,
+        'available_cities': lianjia.available_cities,
+        'available_cities_map': lianjia.available_cities_map,
+    }
+}
