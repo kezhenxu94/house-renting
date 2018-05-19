@@ -4,11 +4,19 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
+import hashlib
+
+import redis
+from scrapy.exceptions import DropItem
+
 from house_renting.exporters import ESItemExporter
 
 
 class HouseRentingPipeline(object):
     def process_item(self, item, spider):
+        m = hashlib.md5()
+        m.update(item['source_url'])
+        item['item_id'] = m.hexdigest()
         return item
 
 
@@ -20,4 +28,18 @@ class ESPipeline(object):
 
     def process_item(self, item, spider):
         self.exporter.export_item(item)
+        return item
+
+
+class DuplicatesPipeline(object):
+    def __init__(self):
+        self.r_client = redis.Redis(host='redis')
+
+    def process_item(self, item, spider):
+        if 'item_id' in item:
+            item_id = item['item_id']
+            existed_id = self.r_client.get(item_id)
+            if existed_id is not None:
+                raise DropItem("Duplicate item found: %s" % item)
+            self.r_client.set(item_id, 'SEEN')
         return item

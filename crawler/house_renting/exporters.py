@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import hashlib
 
 from elasticsearch import Elasticsearch
 from scrapy.exporters import BaseItemExporter
@@ -17,9 +16,6 @@ class ESItemExporter(BaseItemExporter):
         pass
 
     def export_item(self, item):
-        m = hashlib.md5()
-        m.update(item['source_url'])
-        es_id = m.hexdigest()
-
-        self.client.index(index=self.index, doc_type=self.doc_type, body=dict(item), id=es_id)
+        item_id = item['item_id']
+        self.client.index(index=self.index, doc_type=self.doc_type, body=dict(item), id=item_id)
         return item

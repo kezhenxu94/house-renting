@@ -19,6 +19,7 @@ services:
             - ./crawler:/house-renting/crawler
             - ./data:/house-renting/data
         depends_on:
+            - redis
             - elastic
         command: scrapy crawl douban
 
@@ -30,8 +31,21 @@ services:
             - ./crawler:/house-renting/crawler
             - ./data:/house-renting/data
         depends_on:
+            - redis
             - elastic
         command: scrapy crawl 58
+
+    lianjia:
+        build: ./crawler
+        networks:
+            - localhost
+        volumes:
+            - ./crawler:/house-renting/crawler
+            - ./data:/house-renting/data
+        depends_on:
+            - redis
+            - elastic
+        command: scrapy crawl lianjia
 
     elastic:
         image: elasticsearch
@@ -52,6 +66,15 @@ services:
             - ELASTICSEARCH_URL=http://elastic:9200
         depends_on:
             - elastic
+
+    redis:
+        image: redis
+        networks:
+            - localhost
+        ports: 
+            - 6379:6379
+        volumes:
+            - ./data/redis:/data
 
 networks:
     localhost:

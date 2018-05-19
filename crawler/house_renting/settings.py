@@ -33,8 +33,10 @@ DEFAULT_REQUEST_HEADERS = {
 # }
 
 ITEM_PIPELINES = {
-    'scrapy.pipelines.images.ImagesPipeline': 100,
-    'house_renting.pipelines.ESPipeline': 300,
+    'house_renting.pipelines.HouseRentingPipeline': 100,
+    'house_renting.pipelines.DuplicatesPipeline': 200,
+    'scrapy.pipelines.images.ImagesPipeline': 300,
+    'house_renting.pipelines.ESPipeline': 400,
 }
 IMAGES_STORE = '/house-renting/data/images'
 MEDIA_ALLOW_REDIRECTS = True

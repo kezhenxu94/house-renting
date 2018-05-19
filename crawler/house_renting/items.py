@@ -9,10 +9,15 @@ from scrapy.loader.processors import Join, MapCompose, Compose, TakeFirst
 
 
 def filter_title(value):
-    return value if value != u'标题：' else None
+    return value.strip() if value != u'标题：' else None
+
+
+def filter_content(value):
+    return value if len(value) > 0 else None
 
 
 class HouseRentingBaseItem(scrapy.Item):
+    item_id = scrapy.Field()
     title = scrapy.Field(input_processor=MapCompose(unicode.strip, filter_title),
                          output_processor=Compose(TakeFirst(), unicode.strip))
     source = scrapy.Field(output_processor=Join())
@@ -21,8 +26,8 @@ class HouseRentingBaseItem(scrapy.Item):
     image_urls = scrapy.Field()
     images = scrapy.Field()
     author_link = scrapy.Field(output_processor=Join())
-    content = scrapy.Field(input_processor=MapCompose(unicode.strip),
-                           output_processor=Compose(Join(separator=u'\n'), unicode.strip))
+    content = scrapy.Field(input_processor=MapCompose(unicode.strip, filter_content),
+                           output_processor=Compose(Join(separator=u'\n')))
     source_url = scrapy.Field(output_processor=Join())
     publish_time = scrapy.Field(input_processor=MapCompose(unicode.strip),
                                 output_processor=Compose(Join(), unicode.strip))
@@ -37,7 +42,7 @@ class HouseRentingDoubanItem(HouseRentingBaseItem):
                                 output_processor=Compose(Join(), unicode.strip, publish_time_serializer_douban))
 
 
-def publish_time_serializer_58(value):
+def publish_time_serializer(value):
     minutes_ago = re.compile(ur'.*?(\d+)分钟前.*').search(value)
     hours_ago = re.compile(ur'.*?(\d+)小时前.*').search(value)
     days_ago = re.compile(ur'.*?(\d+)天前.*').search(value)
@@ -65,8 +70,15 @@ def price_serializer_58(value):
 
 class HouseRenting58Item(HouseRentingBaseItem):
     publish_time = scrapy.Field(input_processor=MapCompose(unicode.strip),
-                                output_processor=Compose(Join(), unicode.strip, publish_time_serializer_58))
+                                output_processor=Compose(Join(), unicode.strip, publish_time_serializer))
     price = scrapy.Field(input_processor=MapCompose(unicode.strip),
                          output_processor=Compose(Join(), unicode.strip, price_serializer_58))
     detail = scrapy.Field(input_processor=MapCompose(unicode.strip),
                           output_processor=Compose(Join(), unicode.strip))
+
+
+class HouseRentingLianjiaItem(HouseRentingBaseItem):
+    publish_time = scrapy.Field(input_processor=MapCompose(unicode.strip),
+                                output_processor=Compose(Join(), unicode.strip, publish_time_serializer))
+    price = scrapy.Field(input_processor=MapCompose(unicode.strip), output_processor=Compose(Join(), unicode.strip))
+    detail = scrapy.Field(input_processor=MapCompose(unicode.strip), output_processor=Compose(Join(), unicode.strip))
