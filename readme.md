@@ -11,6 +11,10 @@
 $ git clone https://github.com/kezhenxu94/house-renting
 ```
 
+### 选择要扒取的城市(目前只有链家网站支持城市选择):
+
+打开 `crawler/house_renting/spider_settings/lianjia.py` 文件, 按照注释提示完成城市选择;
+
 ### 启动爬虫及 ES, Kibana 服务:
 
 ```shell
