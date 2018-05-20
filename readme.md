@@ -11,9 +11,29 @@
 $ git clone https://github.com/kezhenxu94/house-renting
 ```
 
-### 选择要扒取的城市(目前只有链家网站支持城市选择):
+### 选择要扒取的城市(目前支持链家, 58 同城):
+
+#### 选择需要从链家扒取的城市:
 
 打开 `crawler/house_renting/spider_settings/lianjia.py` 文件, 按照注释提示完成城市选择;
+
+```python
+# ...
+# 只需要在这个列表中添加以下 available_cities 中的城市, 如果只需要扒取一个城市也需要使用一个括号包围, 如 (u'广州')
+cities = (u'广州', u'北京')
+# ...
+```
+
+#### 选择需要从 58 同城扒取的城市:
+
+打开 `crawler/house_renting/spider_settings/a58.py` 文件, 按照注释提示完成城市选择;
+
+```python
+# ...
+# 只需要在这个列表中添加以下 available_cities 中的城市, 如果只需要扒取一个城市也需要使用一个括号包围, 如 (u'广州')
+cities = (u'广州', u'北京')
+# ...
+```
 
 ### 启动爬虫及 ES, Kibana 服务:
 
