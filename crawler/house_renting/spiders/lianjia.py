@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 from scrapy.linkextractors import LinkExtractor
 from scrapy.loader import ItemLoader
-from scrapy.spiders import CrawlSpider, Rule
+from scrapy.spiders import Rule
 
+from house_renting.base_spider import BaseCrawlSpider
 from house_renting.items import HouseRentingLianjiaItem
 
 
-class LianjiaSpider(CrawlSpider):
+class LianjiaSpider(BaseCrawlSpider):
     name = 'lianjia'
     allowed_domains = ['lianjia.com']
 
@@ -15,18 +16,6 @@ class LianjiaSpider(CrawlSpider):
              follow=True),
         Rule(LinkExtractor(allow=r'/zufang/\w+.html$'), callback='parse_item'),
     )
-
-    def start_requests(self):
-        cities = self.settings.get('cities', [])
-        city_url_mappings = self.settings.get('available_cities_map', {})
-
-        print 'cities:', cities, 'city_url_mappings:', city_url_mappings
-
-        for city in cities:
-            if city_url_mappings[city] is None:
-                print 'Cannot crawl house renting data from city: ', city
-            else:
-                yield self.make_requests_from_url(city_url_mappings[city])
 
     def parse_item(self, response):
         item_loader = ItemLoader(item=HouseRentingLianjiaItem(), response=response)

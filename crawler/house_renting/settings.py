@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from house_renting.spider_settings import lianjia
+from house_renting.spider_settings import lianjia, a58
 
 BOT_NAME = 'house_renting'
 
@@ -70,5 +70,10 @@ SPIDER_SETTINGS = {
         'cities': lianjia.cities,
         'available_cities': lianjia.available_cities,
         'available_cities_map': lianjia.available_cities_map,
-    }
+    },
+    '58': {
+        'cities': a58.cities,
+        'available_cities': a58.available_cities,
+        'available_cities_map': a58.available_cities_map,
+    },
 }

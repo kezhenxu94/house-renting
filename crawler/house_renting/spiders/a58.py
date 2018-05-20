@@ -2,15 +2,15 @@
 from scrapy import Selector
 from scrapy.linkextractors import LinkExtractor
 from scrapy.loader import ItemLoader
-from scrapy.spiders import CrawlSpider, Rule
+from scrapy.spiders import Rule
 
+from house_renting.base_spider import BaseCrawlSpider
 from house_renting.items import HouseRenting58Item
 
 
-class A58Spider(CrawlSpider):
+class A58Spider(BaseCrawlSpider):
     name = '58'
     allowed_domains = ['58.com']
-    start_urls = ['http://gz.58.com/chuzu']
 
     rules = (
         Rule(LinkExtractor(allow=(r'/zufang/\?', '/hezu/\?'),
