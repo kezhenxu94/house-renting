@@ -16,7 +16,6 @@ services:
         networks:
             - localhost
         volumes:
-            - ./crawler:/house-renting/crawler
             - ./data:/house-renting/data
         depends_on:
             - redis
@@ -28,7 +27,6 @@ services:
         networks:
             - localhost
         volumes:
-            - ./crawler:/house-renting/crawler
             - ./data:/house-renting/data
         depends_on:
             - redis
@@ -40,7 +38,6 @@ services:
         networks:
             - localhost
         volumes:
-            - ./crawler:/house-renting/crawler
             - ./data:/house-renting/data
         depends_on:
             - redis
