@@ -13,10 +13,11 @@ class A58Spider(BaseCrawlSpider):
     allowed_domains = ['58.com']
 
     rules = (
-        Rule(LinkExtractor(allow=(r'/zufang/(pn\d+/)?\?', '/hezu/(pn\d+/)?\?'),
+        Rule(LinkExtractor(allow=(r'/zufang/(pn\d+/)?', r'/hezu/(pn\d+/)?', r'/chuzu/(pn\d+/)?'),
                            restrict_css='div.main > div.content > div.listBox > ul.listUl > li'),
              follow=True),
-        Rule(LinkExtractor(allow=(r'/zufang/\d+x\.shtml', '/hezu/\d+x\.shtml')), callback='parse_item'),
+        Rule(LinkExtractor(allow=(r'/zufang/\d+x\.shtml', r'/hezu/\d+x\.shtml', r'/chuzu/\d+x\.shtml')),
+             callback='parse_item'),
     )
 
     def parse_item(self, response):
