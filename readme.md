@@ -1,5 +1,7 @@
 # 租房信息聚合爬虫
 
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 **租房信息聚合爬虫**是作者在租房过程中, 由于不堪忍受各个租房网站上各种眼花缭乱的信息而开发的一个基于 [Scrapy](https://scrapy.org) 的爬虫, 作者已经使用该爬虫找到合适的住所; 
 
 为了方便同样身在异乡的朋友解决寻找住处的痛点, 现将该爬虫整理并开源; 目前它聚合了来自[豆瓣](https://www.douban.com), [链家](https://lianjia.com), [58 同城](http://58.com) 等上百个城市的租房信息, 且根据作者的业余时间和精力还在不断更新中; 
