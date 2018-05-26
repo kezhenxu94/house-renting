@@ -63,6 +63,8 @@ $ docker-compose up --build -d
 
 ![设置索引模式](screenshot/setting-index-pattern.png)
 
+在图中的 Index pattern 输入框中输入 `house_renting`, 然后按下 `TAB` 键, `Create` 按钮会变为可用状态, 此时点击 `Create` 按钮; 如果此时 `Create` 按钮还不能用, 是因为爬虫还没有扒取到数据入 Elasticsearch, 需要多等一会儿, 如果长时间这样, 需要检查爬虫服务是否启动成功;
+
 ### 切换到 Discover:
 
 ![切换到 Discover](screenshot/discover.png)
