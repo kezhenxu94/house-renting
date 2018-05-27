@@ -45,12 +45,15 @@ DEFAULT_REQUEST_HEADERS = {
 }
 
 SPIDER_MIDDLEWARES = {
-    'house_renting.middlewares.HouseRentingAgentMiddleware': 100,
 }
 
-# DOWNLOADER_MIDDLEWARES = {
-#    'house_renting.middlewares.MyCustomDownloaderMiddleware': 543,
-# }
+DOWNLOADER_MIDDLEWARES = {
+    'house_renting.middlewares.HouseRentingAgentMiddleware': 100,
+    'house_renting.middlewares.HouseRentingProxyMiddleware': 200,
+    'house_renting.middlewares.HouseRentingRetryMiddleware': 300,
+    'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,
+    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
+}
 
 ITEM_PIPELINES = {
     'house_renting.pipelines.HouseRentingPipeline': 100,
@@ -58,29 +61,26 @@ ITEM_PIPELINES = {
     'scrapy.pipelines.images.ImagesPipeline': 300,
     'house_renting.pipelines.ESPipeline': 400,
 }
-IMAGES_STORE = '/tmp/house-renting/data/images'
+
+IMAGES_STORE = '/house-renting/data/images'
+
 MEDIA_ALLOW_REDIRECTS = True
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
 AUTOTHROTTLE_ENABLED = True
 # The initial download delay
-AUTOTHROTTLE_START_DELAY = 5
+AUTOTHROTTLE_START_DELAY = 3
 # The maximum download delay to be set in case of high latencies
-AUTOTHROTTLE_MAX_DELAY = 10
+AUTOTHROTTLE_MAX_DELAY = 5
 # The average number of requests Scrapy should be sending in parallel to
 # each remote server
-AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
+AUTOTHROTTLE_TARGET_CONCURRENCY = 2.0
 # Enable showing throttling stats for every response received:
 AUTOTHROTTLE_DEBUG = True
 
-# Enable and configure HTTP caching (disabled by default)
-# See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
-# HTTPCACHE_ENABLED = True
-# HTTPCACHE_EXPIRATION_SECS = 0
-# HTTPCACHE_DIR = 'httpcache'
-# HTTPCACHE_IGNORE_HTTP_CODES = []
-# HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+DOWNLOAD_TIMEOUT = 30
+RETRY_TIMES = 3
 
 LOG_LEVEL = 'DEBUG'
 
