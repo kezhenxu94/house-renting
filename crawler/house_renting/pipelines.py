@@ -7,6 +7,7 @@
 import hashlib
 
 import redis
+from scrapy.conf import settings
 from scrapy.exceptions import DropItem
 
 from house_renting.exporters import ESItemExporter
@@ -33,13 +34,21 @@ class ESPipeline(object):
 
 class DuplicatesPipeline(object):
     def __init__(self):
-        self.r_client = redis.Redis(host='redis')
+        redis_host = settings.get('REDIS_HOST')
+        redis_port = settings.get('REDIS_PORT', default=6379)
+        
+        if redis_host is not None:
+            self.r_client = redis.Redis(host=redis_host, port=redis_port)
 
     def process_item(self, item, spider):
+        if self.r_client is None:
+            return item
+
         if 'item_id' in item:
             item_id = item['item_id']
             existed_id = self.r_client.get(item_id)
             if existed_id is not None:
                 raise DropItem("Duplicate item found: %s" % item)
             self.r_client.set(item_id, 'SEEN')
+
         return item

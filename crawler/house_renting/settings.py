@@ -96,3 +96,11 @@ SPIDER_SETTINGS = {
         'available_cities_map': a58.available_cities_map,
     },
 }
+
+# ES 节点, 可以配置多个节点(集群), 默认为 None, 不会存储到 ES
+ELASTIC_HOSTS = [
+    {'host': 'elastic', 'port': 9200},
+]
+
+REDIS_HOST = 'redis'  # 默认为 None, 不会去重
+REDIS_PORT = 6379  # 默认 6379

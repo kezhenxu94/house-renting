@@ -7,6 +7,7 @@
 import random
 
 from redis import Redis
+from scrapy.conf import settings
 from scrapy.downloadermiddlewares.retry import RetryMiddleware
 
 from house_renting import proxies
@@ -37,7 +38,12 @@ class HouseRentingRetryMiddleware(RetryMiddleware):
 
 class HouseRentingProxyMiddleware(object):
     def __init__(self):
-        self.redis = Redis(host='redis')
+        redis_host = settings.get('REDIS_HOST')
+        redis_port = settings.get('REDIS_PORT', default=6379)
+
+        if redis_host is not None:
+            self.r_client = Redis(host=redis_host, port=redis_port)
+
         self.proxies = proxies.proxies
 
     def process_request(self, request, spider):

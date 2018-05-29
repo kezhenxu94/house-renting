@@ -2,7 +2,10 @@
 !.gitignore
 *.pyc
 
-data/
+data/elastic
+data/redis
+data/images/full
+
 build/
 dbs/
 eggs/
