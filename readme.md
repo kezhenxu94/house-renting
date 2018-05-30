@@ -1,6 +1,7 @@
 # 租房信息聚合爬虫
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Build Status](https://travis-ci.org/kezhenxu94/house-renting.svg?branch=master)](https://travis-ci.org/kezhenxu94/house-renting)
 
 **租房信息聚合爬虫**是作者在租房过程中, 由于不堪忍受各个租房网站上各种眼花缭乱的信息而开发的一个基于 [Scrapy](https://scrapy.org) 的爬虫, 作者已经使用该爬虫找到合适的住所; 
 
