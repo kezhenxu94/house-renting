@@ -6,12 +6,12 @@ from scrapy.exporters import BaseItemExporter
 
 
 class ESItemExporter(BaseItemExporter):
-    elastic_hosts = None
     index = 'house_renting'
     doc_type = 'Post'
-    client = None
 
-    def open_spider(self, spider):
+    def __init__(self, **kwargs):
+        super(ESItemExporter, self).__init__(**kwargs)
+
         self.elastic_hosts = settings.get('ELASTIC_HOSTS')
 
         if self.elastic_hosts is not None:
