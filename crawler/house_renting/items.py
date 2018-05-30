@@ -7,11 +7,6 @@ import time
 import scrapy
 from scrapy.loader.processors import Join, MapCompose, Compose, TakeFirst
 
-try:
-    unicode        # Python 2
-except NameError:
-    unicode = str  # Python 3
-
 
 def filter_title(value):
     return value.strip() if value != u'标题：' else None
