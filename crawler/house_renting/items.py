@@ -43,10 +43,10 @@ class HouseRentingDoubanItem(HouseRentingBaseItem):
 
 
 def publish_time_serializer(value):
-    minutes_ago = re.compile(ur'.*?(\d+)分钟前.*').search(value)
-    hours_ago = re.compile(ur'.*?(\d+)小时前.*').search(value)
-    days_ago = re.compile(ur'.*?(\d+)天前.*').search(value)
-    date = re.compile(ur'.*?(\d+)-(\d+).*').search(value)
+    minutes_ago = re.compile(u'.*?(\d+)分钟前.*').search(value)
+    hours_ago = re.compile(u'.*?(\d+)小时前.*').search(value)
+    days_ago = re.compile(u'.*?(\d+)天前.*').search(value)
+    date = re.compile(u'.*?(\d+)-(\d+).*').search(value)
 
     if minutes_ago:
         publish_time = datetime.datetime.today() - datetime.timedelta(minutes=int(minutes_ago.group(1)))
@@ -62,7 +62,7 @@ def publish_time_serializer(value):
 
 
 def price_serializer_58(value):
-    price = re.compile(ur'\s*(\d+)\s*元/月.*').search(value)
+    price = re.compile(u'\s*(\d+)\s*元/月.*').search(value)
     if price:
         return int(price.group(1))
     return None

@@ -36,7 +36,7 @@ class DuplicatesPipeline(object):
     def __init__(self):
         redis_host = settings.get('REDIS_HOST')
         redis_port = settings.get('REDIS_PORT', default=6379)
-        
+
         if redis_host is not None:
             self.r_client = redis.Redis(host=redis_host, port=redis_port)
 
