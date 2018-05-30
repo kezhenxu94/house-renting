@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from__future__ import print_function
+from __future__ import print_function
 from scrapy.spiders import CrawlSpider
 
 
