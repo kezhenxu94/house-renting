@@ -1,4 +1,4 @@
-FROM python:2
+FROM python:3
 
 MAINTAINER kezhenxu94 <kezhenxu94@163.com>
 
