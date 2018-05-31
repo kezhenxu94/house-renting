@@ -13,6 +13,7 @@ services:
 
     douban:
         build: ./crawler
+        container_name: douban
         networks:
             - localhost
         volumes:
@@ -22,8 +23,9 @@ services:
             - elastic
         command: scrapy crawl douban
 
-    _58:
+    "58":
         build: ./crawler
+        container_name: "58"
         networks:
             - localhost
         volumes:
@@ -35,6 +37,7 @@ services:
 
     lianjia:
         build: ./crawler
+        container_name: lianjia
         networks:
             - localhost
         volumes:
@@ -45,7 +48,15 @@ services:
         command: scrapy crawl lianjia
 
     elastic:
-        image: elasticsearch
+        image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.4
+        container_name: elasticsearch
+        environment:
+            - bootstrap.memory_lock=true
+            - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+        ulimits:
+            memlock:
+                soft: -1
+                hard: -1
         networks:
             - localhost
         ports:
@@ -54,7 +65,8 @@ services:
             - ./data/elastic:/usr/share/elasticsearch/data
 
     kibana:
-        image: kibana
+        image: docker.elastic.co/kibana/kibana-oss:6.2.4
+        container_name: kibana
         networks:
             - localhost
         ports:
@@ -66,6 +78,7 @@ services:
 
     redis:
         image: redis
+        container_name: redis
         networks:
             - localhost
         ports: 

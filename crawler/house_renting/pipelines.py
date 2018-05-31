@@ -16,7 +16,7 @@ from house_renting.exporters import ESItemExporter
 class HouseRentingPipeline(object):
     def process_item(self, item, spider):
         m = hashlib.md5()
-        m.update(item['source_url'])
+        m.update(item['source_url'].encode('utf-8'))
         item['item_id'] = m.hexdigest()
         return item
 
