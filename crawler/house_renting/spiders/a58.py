@@ -21,10 +21,7 @@ class A58Spider(BaseCrawlSpider):
     )
 
     def parse_item(self, response):
-        selector = Selector(response=response)
-        selector.css('div.main-wrap')
-
-        item_loader = ItemLoader(item=HouseRenting58Item(), selector=selector, response=response)
+        item_loader = ItemLoader(item=HouseRenting58Item(), selector=response.css('div.main-wrap'), response=response)
         item_loader.add_css(field_name='title', css='div.house-title > h1::text')
         item_loader.add_value(field_name='source', value=self.name)
         item_loader.add_css(field_name='author', css='div.house-basic-info div.house-agent-info p.agent-name > a::text')
