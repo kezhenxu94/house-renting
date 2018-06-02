@@ -1,51 +1,67 @@
 version: '3.1'
 
 services:
-    #scrapyd:
-    #    build: ./crawler
-    #    networks:
-    #        - localhost
-    #    ports:
-    #        - 6800:6800
-    #    command: scrapyd
-    #    depends_on:
-    #        - elastic
+    scrapyd:
+        build: ./scrapyd
+        image: house-renting/scrapyd
+        container_name: scrapyd
+        networks:
+            - localhost
+        ports:
+            - 6800:6800
+        depends_on:
+            - redis
+            - elastic
+        volumes:
+            - ./data:/house-renting/data
+        entrypoint: /bin/true
+
+    crawler:
+        build: ./crawler
+        image: house-renting/crawler
+        container_name: crawler
+        networks:
+            - localhost
+        volumes:
+            - ./data:/house-renting/data
+            - ./data/images:/house-renting/data/images
+        depends_on:
+            - redis
+            - elastic
+        entrypoint: /bin/true
 
     douban:
-        build: ./crawler
+        image: house-renting/crawler
         container_name: douban
         networks:
             - localhost
         volumes:
-            - ./data:/house-renting/data
+            - ./data/images:/house-renting/data/images
         depends_on:
-            - redis
-            - elastic
-        command: scrapy crawl douban
+            - crawler
+        entrypoint: scrapy crawl douban
 
     "58":
-        build: ./crawler
+        image: house-renting/crawler
         container_name: "58"
         networks:
             - localhost
         volumes:
-            - ./data:/house-renting/data
+            - ./data/images:/house-renting/data/images
         depends_on:
-            - redis
-            - elastic
-        command: scrapy crawl 58
+            - crawler
+        entrypoint: scrapy crawl 58
 
     lianjia:
-        build: ./crawler
+        image: house-renting/crawler
         container_name: lianjia
         networks:
             - localhost
         volumes:
-            - ./data:/house-renting/data
+            - ./data/images:/house-renting/data/images
         depends_on:
-            - redis
-            - elastic
-        command: scrapy crawl lianjia
+            - crawler
+        entrypoint: scrapy crawl lianjia
 
     elastic:
         image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.4

@@ -2,8 +2,6 @@ FROM python:3
 
 MAINTAINER kezhenxu94 <kezhenxu94@163.com>
 
-COPY ./scrapyd.conf /etc/scrapyd/
-
 COPY . /house-renting/crawler
 
 VOLUME /etc/scrapyd/ /var/lib/scrapyd/
