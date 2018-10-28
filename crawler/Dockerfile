@@ -1,7 +1,5 @@
 FROM python:3.6
 
-MAINTAINER kezhenxu94 <kezhenxu94@163.com>
-
 COPY . /house-renting/crawler
 
 VOLUME /etc/scrapyd/ /var/lib/scrapyd/
