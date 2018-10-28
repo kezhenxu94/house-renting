@@ -1,5 +1,6 @@
 # 租房信息聚合爬虫
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ff42798a35db47459892ab5c754304f8)](https://app.codacy.com/app/kezhenxu94/house-renting?utm_source=github.com&utm_medium=referral&utm_content=kezhenxu94/house-renting&utm_campaign=Badge_Grade_Settings)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Build Status](https://travis-ci.org/kezhenxu94/house-renting.svg?branch=master)](https://travis-ci.org/kezhenxu94/house-renting)
 [![Python Version](https://img.shields.io/badge/Python-2.7-green.svg)](https://www.python.org/downloads/release/python-2715/)
