@@ -17,34 +17,34 @@ Delete this paragraph and replace the content below starting with `>` with your 
 
 重现步骤 (Steps to reproduce the behavior):
 
-> 1 Go to '...'
-> 2 Click on '....'
-> 3 Scroll down to '....'
-> 4 See error
+> 1.  Go to '...'
+> 2.  Click on '....'
+> 3.  Scroll down to '....'
+> 4.  See error
 
 ## 截图 (Screenshots)
 
 > 如果有截图的话, 加上你遇到 Bug 的截图 (If applicable, add screenshots to help explain your problem).
 
-## 桌面环境 Desktop (please complete the following information):
+## 桌面环境 Desktop (please complete the following information)
 
-- 操作系统(OS): 
+-  操作系统(OS): 
 
 如果是通过 Docker 运行:
 
-- Docker:
+-  Docker:
 
 如果不是是通过 Docker 运行:
 
-- Python: 
+-  Python: 
 
-- Scrapy:
+-  Scrapy:
 
-- Redis:
+-  Redis:
 
-- Elastic search:
+-  Elastic search:
 
-- Kibana:
+-  Kibana:
 
 ## 附加信息 (Additional context)
 

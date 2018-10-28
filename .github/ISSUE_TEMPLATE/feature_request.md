@@ -7,7 +7,7 @@ about: 给这个项目提建议 (Suggest an idea for this project)
 **Is your feature request related to a problem? Please describe.**
 **你的功能建议和某一个问题相关吗? 请描述.**
 
-> A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+> A clear and concise description of what the problem is. Ex. I'm always frustrated when ...
 > 清晰简短的描述你遇到的问题. 比如说: "我总是搞不清楚 ES, Kibana 怎么用"
 
 **Describe the solution you'd like**
