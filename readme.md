@@ -24,3 +24,11 @@
 ## 贡献
 
 如果你觉得某个租房网站的内容对你非常有用, 应该被收录在这里, 可以[在这里提 Issue](https://github.com/kezhenxu94/house-renting/issues), 或者你自己实现之后[在这里提 Pull Request](https://github.com/kezhenxu94/house-renting/pulls), 帮助更多人找到合适的住所;
+
+## 捐赠
+
+如果我的项目对你有帮助，可以请我喝杯饮料
+
+|  微信支付 |  支付宝  |
+| :------: | :------: |
+| ![alipay](https://user-images.githubusercontent.com/15965696/48297850-c6970180-e4ec-11e8-96cb-9b3adcdd0b66.jpg) | ![wepay](https://user-images.githubusercontent.com/15965696/48297851-ca2a8880-e4ec-11e8-9e7d-426bbbbb9a78.png) |
