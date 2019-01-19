@@ -16,6 +16,10 @@ def filter_content(value):
     return value if len(value) > 0 else None
 
 
+def filter_image_url(value):
+    return 'https:'+value if value[:2] == '//' else value
+
+
 class HouseRentingBaseItem(scrapy.Item):
     item_id = scrapy.Field()
     title = scrapy.Field(input_processor=MapCompose(str.strip, filter_title),
@@ -23,7 +27,7 @@ class HouseRentingBaseItem(scrapy.Item):
     source = scrapy.Field(output_processor=Join())
     author = scrapy.Field(input_processor=MapCompose(str.strip),
                           output_processor=Compose(Join(), str.strip))
-    image_urls = scrapy.Field()
+    image_urls = scrapy.Field(input_processor=MapCompose(filter_image_url))
     images = scrapy.Field()
     author_link = scrapy.Field(output_processor=Join())
     content = scrapy.Field(input_processor=MapCompose(str.strip, filter_content),
